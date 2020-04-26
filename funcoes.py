@@ -10,3 +10,19 @@ def fibonacci (x):
         return fibo 
     except:
         return 0
+
+def caesar_encrypt(realText, step):
+    ucase='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    lcase= ucase.lower()
+
+    cipherText = ''
+
+    for c in realText:
+        if c.isalpha():
+            if c in ucase:
+                cipherText += ucase[(ucase.index(c)+step)%26]
+            else:
+                cipherText += lcase[(lcase.index(c)+step)%26]
+        else:
+            cipherText += c
+    return cipherText

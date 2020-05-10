@@ -14,7 +14,7 @@ def fibonacci (x):
 
 # Encode a given string with ceaser cipher method, in which each letter in the realtext is replaced 
 # by a letter some fixed number of positions (steps) down the alphabet.
-def caesar_encrypt(realText, step):
+def caesarEncrypt(realText, step):
     try:
         if type(realText) != str or type(step) != int:
             raise TypeError
@@ -36,4 +36,55 @@ def caesar_encrypt(realText, step):
         return cipherText
 
     except TypeError:
-        print('Parâmetros inválidos: realText deve ser string e step inteiro')
+        print('Invalid parameters: realText must be a string and step must be an integer')
+
+#It repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.
+def bubbleSort(pList):
+    try:
+        if type(pList) != list:
+            raise TypeError
+
+        for lastPos in range(len(pList)-1,0,-1):
+            for i in range(lastPos):
+                if pList[i]>pList[i+1]:
+                    temp = pList[i]
+                    pList[i] = pList[i+1]
+                    pList[i+1] = temp
+
+    except TypeError:
+        print('Invalid parameters: pList must be a list')
+
+#It takes the smallest element to the first position, after the second smallest to the second and so on.
+def selectionSort(pList):
+    try:
+        if type(pList) != list:
+            raise TypeError
+
+        for firstPos in range(0, len(pList)-1):
+            smallestPos=firstPos
+            for i in range(firstPos+1,len(pList)):
+                if pList[i]<pList[smallestPos]:
+                    smallestPos = i
+            temp = pList[firstPos]
+            pList[firstPos] = pList[smallestPos]
+            pList[smallestPos] = temp
+
+    except TypeError:
+        print('Invalid parameters: pList must be a list')
+
+#It takes the nth element and put it in the correct position among the previous ones
+def insertionSort( pList ):
+    try:
+        if type(pList) != list:
+            raise TypeError
+
+        for i in range( 1, len( pList ) ):
+            num = pList[i]
+            k = i
+            while k > 0 and num < pList[k - 1]:
+                pList[k] = pList[k - 1]
+                k -= 1
+            pList[k] = num
+
+    except TypeError:
+        print('Invalid parameters: pList must be a list')

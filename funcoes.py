@@ -88,3 +88,30 @@ def insertionSort( pList ):
 
     except TypeError:
         print('Invalid parameters: pList must be a list')
+
+#It starts by sorting pairs of elements far apart from each other, then progressively reducing the gap between elements to be compared.
+#Here, the gap de sequence is simply determined by dividing the size of the sequence by 2.
+def shellSort(pList):
+    try:
+        if type(pList) != list:
+            raise TypeError
+
+        gap = len(pList)//2
+        while gap > 0:
+            for startPosition in range(gap):
+                for i in range(startPosition+gap,len(pList),gap):
+            
+                    currentValue = pList[i]
+                    position = i
+            
+                    while position>=gap and pList[position-gap]>currentValue:
+                        pList[position]=pList[position-gap]
+                        position = position-gap
+            
+                    pList[position]=currentValue
+                    
+            gap = gap // 2
+
+    except TypeError:
+        print('Invalid parameters: pList must be a list')
+

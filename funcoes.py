@@ -115,3 +115,71 @@ def shellSort(pList):
     except TypeError:
         print('Invalid parameters: pList must be a list')
 
+#It divides the list into n sublists, each containing one element and repeatedly merge sublists, sorting it.
+def mergeSort(pList):
+    try:
+        if type(pList) != list:
+            raise TypeError
+
+        if len(pList) > 1:
+            mid = len(pList)//2
+            left = pList[:mid]
+            right = pList[mid:]  
+            mergeSort(left)
+            mergeSort(right)
+
+            i = j = k = 0
+        
+            while i < len(left) and j < len(right): 
+                if left[i] < right[j]: 
+                    pList[k] = left[i] 
+                    i+=1
+                else: 
+                    pList[k] = right[j] 
+                    j+=1
+                k+=1
+
+            while i < len(left):
+                pList[k]=left[i]
+                i=i+1
+                k=k+1
+            while j < len(right):
+                pList[k]=right[j]
+                j=j+1
+                k=k+1
+                
+    except TypeError:
+        print('Invalid parameters: pList must be a list')
+
+
+#It picks the last element as pivot and partitions the given array around the picked pivot,
+#all smaller elements in the left and all greater ones in the right of the pivot.
+def quickSort(pList):
+    try:
+        if type(pList) != list:
+            raise TypeError
+
+        if len(pList) > 1:
+            pivot = i = len(pList)-1
+            j = pivot-1
+
+            while j >= 0:
+                if pList[j] > pList[pivot]:
+                    i=i-1
+                    pList[i],pList[j] = pList[j],pList[i]
+
+                j=j-1
+
+            pList[pivot], pList[i] = pList[i], pList[pivot]
+
+            left = pList[:i]
+            right = pList[i+1:]  
+
+            quickSort(left)
+            quickSort(right)
+
+            pList[:i] = left
+            pList[i+1:] = right
+
+    except TypeError:
+        print('Invalid parameters: pList must be a list')       

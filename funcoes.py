@@ -14,7 +14,7 @@ def fibonacci (x):
 
 # Encode a given string with ceaser cipher method, in which each letter in the realtext is replaced 
 # by a letter some fixed number of positions (steps) down the alphabet.
-def caesarEncrypt(realText, step):
+def ceasarEncrypt(realText, step):
     try:
         if type(realText) != str or type(step) != int:
             raise TypeError
